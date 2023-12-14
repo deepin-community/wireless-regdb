@@ -1,0 +1,31 @@
+If you need to make an NMU, you'll first have to create a key-pair
+and certificate.
+
+1. Set REGDB_AUTHOR to the address you use in the Debian changelog:
+       REGDB_AUTHOR="example@debian.org"
+2. Generate the private key by running:
+       make REGDB_AUTHOR="$REGDB_AUTHOR" ~/".wireless-regdb-$REGDB_AUTHOR.key.priv.pem"
+3. Generate the public key by running:
+       make REGDB_AUTHOR="$REGDB_AUTHOR" "$REGDB_AUTHOR.key.pub.pem"
+4. Generate a certificate by running:
+       openssl req -new -key ~/.wireless-regdb-"$REGDB_AUTHOR.key.priv.pem" \
+           -days 36500 -utf8 -nodes -batch -x509 \
+           -outform PEM -out "$REGDB_AUTHOR.x509.pem" \
+           -config <(cat <<-EOF
+               [ req ]
+               distinguished_name = req_distinguished_name
+               string_mask = utf8only
+               prompt = no
+               [ req_distinguished_name ]
+               commonName = $REGDB_AUTHOR
+               EOF
+           )
+5. Add the certificate to the linux package and regenerate
+   debian/patches/debian/wireless-add-debian-wireless-regdb-certificates.patch
+   as documented in its patch header.
+
+When preparing a source package, you must run 'debian/rules sign' to
+create a detached signature so that the private key is not needed when
+building the binary package.
+
+ -- Ben Hutchings <benh@debian.org>, Sat, 22 Jan 2022 16:50:24 +0100
