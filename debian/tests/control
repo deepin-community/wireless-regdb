@@ -1,0 +1,2 @@
+Tests: check-signatures
+Depends: wireless-regdb, linux-source, openssl, python3
