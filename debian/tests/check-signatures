@@ -4,12 +4,10 @@
 # trusted by the current kernel in the target suite
 
 import glob
-import io
 import os
 import os.path
 import re
 import subprocess
-import sys
 
 
 tmp_dir = os.getenv('AUTOPKGTEST_TMP')
@@ -17,10 +15,9 @@ tmp_dir = os.getenv('AUTOPKGTEST_TMP')
 
 # Find current major/minor kernel version
 def get_linux_source_name():
-    proc = subprocess.Popen(['dpkg', '-s', 'linux-source'],
-                            stdout=subprocess.PIPE)
-    with io.open(proc.stdout.fileno(), encoding='utf-8') as pipe:
-        for line in pipe:
+    with subprocess.Popen(['dpkg', '-s', 'linux-source'],
+                          stdout=subprocess.PIPE, text=True) as proc:
+        for line in proc.stdout:
             match = re.match(r'^Depends:.*\b(linux-source-[0-9.]*)\b', line)
             if match:
                 return match.group(1)
@@ -57,12 +54,11 @@ def convert_c_hex_to_bytes(hex):
 
 # Convert an X.509 certificate from DER to PEM format
 def convert_cert_der_to_pem(der):
-    proc = subprocess.Popen(['openssl', 'x509', '-inform', 'der',
-                             '-outform', 'pem'],
-                            stdin=subprocess.PIPE,
-                            stdout=subprocess.PIPE)
-    pem, _ = proc.communicate(der)
-    proc.wait()
+    with subprocess.Popen(['openssl', 'x509', '-in', '/dev/stdin',
+                           '-inform', 'der', '-outform', 'pem'],
+                          stdin=subprocess.PIPE,
+                          stdout=subprocess.PIPE) as proc:
+        pem, _ = proc.communicate(der)
     return pem
 
 
