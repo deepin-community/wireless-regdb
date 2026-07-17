@@ -1,3 +1,7 @@
-version=3
-opts="pgpmode=mangle, pgpsigurlmangle=s|\.xz$|.sign|, decompress" \
-https://www.kernel.org/pub/software/network/wireless-regdb/wireless-regdb-(.*)\.tar\.xz debian
+Version: 5
+
+Source: https://www.kernel.org/pub/software/network/wireless-regdb/
+Matching-Pattern: wireless-regdb-(.*)\.tar\.xz
+Decompress: yes
+Pgpmode: mangle
+Pgpsigurlmangle: s|\.xz$|.sign|
