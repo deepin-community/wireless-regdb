@@ -1,3 +1,45 @@
+wireless-regdb (2026.02.04-1~deb13u1) trixie; urgency=medium
+
+  * Backported to trixie:
+    - d/salsa-ci.yml: Set RELEASE to trixie
+    - Revert "Add support and documentation for setting default regulatory
+      domain"
+
+ -- Ben Hutchings <benh@debian.org>  Fri, 20 Feb 2026 17:03:11 +0100
+
+wireless-regdb (2026.02.04-1) unstable; urgency=medium
+
+  [ Ben Hutchings ]
+  * New upstream version:
+    - Update regulatory info for Australia (AU) for 2025
+    - Update broken link in regulatory.bin(5) manpage
+    - Update regulatory info for Malaysia (MY) for 2024
+    - Update regulatory info for Malaysia (MY) for 2025
+    - Update regulatory info for Tunisia (TN) on 6GHz for 2025
+    - Update regulatory info for Canada (CA) for 2025
+  * d/rules: Install regulatory.db under /usr without dh_movetousr
+    (Closes: #1122785)
+  * d/README.Debian: Remove minimum kernel version for direct-loading
+  * Add support and documentation for setting default regulatory domain
+
+  [ Bastian Germann ]
+  * Drop unnecessary B-D m2crypto (Closes: #1126431)
+
+ -- Ben Hutchings <benh@debian.org>  Fri, 13 Feb 2026 14:11:18 +0100
+
+wireless-regdb (2025.10.07-1) unstable; urgency=medium
+
+  * New upstream version:
+    - update regulatory rules for Botswana (BW) for 2022
+    - update regulatory rules for Sint Marteen (SX) for 2018
+    - Update regulatory info including bandwidth for Costa Rica (CR) for 2023
+    - Permit lower 6 GHz band for Kazakhstan (KZ)
+  * d/salsa-ci.yml: Remove obsolete lintian error suppression
+  * d/upstream/signing-key.asc: Update for later expiry date
+  * d/watch: Convert to version 5 format
+
+ -- Ben Hutchings <benh@debian.org>  Mon, 20 Oct 2025 20:42:25 +0200
+
 wireless-regdb (2025.07.10-1) unstable; urgency=medium
 
   * New upstream version:

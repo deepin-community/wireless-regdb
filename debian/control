@@ -6,7 +6,6 @@ Uploaders: Ben Hutchings <benh@debian.org>, Romain Perier <romain.perier@gmail.c
 Build-Depends: debhelper-compat (= 12),
  openssl,
  python3,
- python3-m2crypto,
  python-is-python3,
  quilt
 Rules-Requires-Root: no
