@@ -1,3 +1,32 @@
+wireless-regdb (2026.05.30-1~deb13u1) trixie; urgency=medium
+
+  * Rebuild for trixie
+
+ -- Ben Hutchings <benh@debian.org>  Fri, 05 Jun 2026 19:02:04 +0200
+
+wireless-regdb (2026.05.30-1) unstable; urgency=medium
+
+  * New upstream version:
+    - Add regulatory info for CEPT countries FO, GI, IM, SM and VA listed by
+      WiFi Alliance
+    - Update 6 GHz rules for Hong Kong (HK)
+    - Update 5/6 GHz power rules for Russia (RU)
+    - Fix 60 GHz power unit for Ukraine (UA)
+    - Update 6 GHz rules for South Africa (ZA)
+    - Update 6 GHz rules for South Korea (KR)
+    - allow 320MHz channel width for Russia
+    - Update regulatory info for Brunei Darussalam (BN) for 2022
+    - Update regulatory rules for Sri Lanka (LK)
+
+ -- Ben Hutchings <benh@debian.org>  Fri, 05 Jun 2026 17:45:04 +0200
+
+wireless-regdb (2026.03.18-1) unstable; urgency=medium
+
+  * New upstream version:
+    - Update regulatory rules for India (IN) on 6GHz
+
+ -- Ben Hutchings <benh@debian.org>  Thu, 07 May 2026 11:43:19 +0200
+
 wireless-regdb (2026.02.04-1~deb13u1) trixie; urgency=medium
 
   * Backported to trixie:
